@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustainability Challenges and Solutions</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #2e7d32;
+            --secondary-color: #81c784;
+            --accent-color: #ff8f00;
+            --dark-color: #1b5e20;
+            --light-color: #e8f5e9;
+            --text-color: #333;
+            --white: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-color);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: var(--dark-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Header */
+        header {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 68px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        /* Challenges Section */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .challenge-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .challenge-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .challenge-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .challenge-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .challenge-card:hover .challenge-img img {
+            transform: scale(1.1);
+        }
+        
+        .challenge-content {
+            padding: 20px;
+        }
+        
+        .challenge-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        /* Solutions Section */
+        .solutions {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .solutions .section-title h2 {
+            color: var(--white);
+        }
+        
+        .solutions .section-title h2::after {
+            background: var(--accent-color);
+        }
+        
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .solution-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .solution-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .solution-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .solution-card h3 i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        /* Call to Action */
+        .cta {
+            text-align: center;
+            padding: 60px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            background: var(--accent-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--dark-color);
+            transform: translateY(-5px);
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: var(--accent-color);
+            transform: rotate(90deg);
+        }
+        
+        .modal h3 {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 15px;
+            }
+            
+            nav {
+                position: fixed;
+                top: 68px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 68px);
+                background: var(--dark-color);
+                transition: all 0.5s ease;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 30px;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+            
+            .cta h2 {
+                font-size: 30px;
+            }
+            
+            .cta p {
+                font-size: 18px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">GreenFuture</div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#challenges">Challenges</a></li>
+                    <li><a href="#solutions">Solutions</a></li>
+                    <li><a href="#take-action">Take Action</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Sustainability Challenges and Solutions</h1>
+                <p>Discover the major environmental challenges our planet faces and learn about practical solutions to create a sustainable future for generations to come.</p>
+                <a href="#challenges" class="btn">Explore Challenges</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenges Section -->
+    <section class="section" id="challenges">
+        <div class="container">
+            <div class="section-title">
+                <h2>Key Sustainability Challenges</h2>
+            </div>
+            <div class="challenges-grid">
+                <!-- Challenge 1 -->
+                <div class="challenge-card" onclick="openModal('climate-change')">
+                    <div class="challenge-img">
+                        <img src="https://images.unsplash.com/photo-1612536057832-2ff7ead58194?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Climate Change">
+                    </div>
+                    <div class="challenge-content">
+                        <h3>Climate Change</h3>
+                        <p>Rising global temperatures, extreme weather events, and melting ice caps threaten ecosystems worldwide.</p>
+                    </div>
+                </div>
+                
+                <!-- Challenge 2 -->
+                <div class="challenge-card" onclick="openModal('biodiversity')">
+                    <div class="challenge-img">
+                        <img src="https://images.unsplash.com/photo-1589595363745-d842812a9db7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Biodiversity Loss">
+                    </div>
+                    <div class="challenge-content">
+                        <h3>Biodiversity Loss</h3>
+                        <p>Habitat destruction and pollution are causing species extinction at an alarming rate.</p>
+                    </div>
+                </div>
+                
+                <!-- Challenge 3 -->
+                <div class="challenge-card" onclick="openModal('pollution')">
+                    <div class="challenge-img">
+                        <img src="https://images.unsplash.com/photo-1584473457406-6240486418e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pollution">
+                    </div>
+                    <div class="challenge-content">
+                        <h3>Pollution</h3>
+                        <p>Plastic waste, air pollution, and toxic chemicals are contaminating our environment.</p>
+                    </div>
+                </div>
+                
+                <!-- Challenge 4 -->
+                <div class="challenge-card" onclick="openModal('resources')">
+                    <div class="challenge-img">
+                        <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Resource Depletion">
+                    </div>
+                    <div class="challenge-content">
+                        <h3>Resource Depletion</h3>
+                        <p>Overconsumption of water, minerals, and fossil fuels is exhausting Earth's finite resources.</p>
+                    </div>
+                </div>
+                
+                <!-- Challenge 5 -->
+                <div class="challenge-card" onclick="openModal('food')">
+                    <div class="challenge-img">
+                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Food Security">
+                    </div>
+                    <div class="challenge-content">
+                        <h3>Food Security</h3>
+                        <p>Industrial farming and food waste are straining our agricultural systems.</p>
+                    </div>
+                </div>
+                
+                <!-- Challenge 6 -->
+                <div class="challenge-card" onclick="openModal('urbanization')">
+                    <div class="challenge-img">
+                        <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Urbanization">
+                    </div>
+                    <div class="challenge-content">
+                        <h3>Urbanization</h3>
+                        <p>Rapid city growth creates infrastructure stress and environmental degradation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="section solutions" id="solutions">
+        <div class="container">
+            <div class="section-title">
+                <h2>Practical Solutions</h2>
+            </div>
+            <div class="solutions-grid">
+                <!-- Solution 1 -->
+                <div class="solution-card">
+                    <h3><i class="fas fa-recycle"></i> Circular Economy</h3>
+                    <p>Transition from a linear "take-make-waste" model to a circular system where materials are reused and recycled indefinitely.</p>
+                </div>
+                
+                <!-- Solution 2 -->
+                <div class="solution-card">
+                    <h3><i class="fas fa-solar-panel"></i> Renewable Energy</h3>
+                    <p>Shift from fossil fuels to solar, wind, hydro, and other clean energy sources to reduce carbon emissions.</p>
+                </div>
+                
+                <!-- Solution 3 -->
+                <div class="solution-card">
+                    <h3><i class="fas fa-leaf"></i> Regenerative Agriculture</h3>
+                    <p>Farming practices that restore soil health, increase biodiversity, and improve water cycles while producing food.</p>
+                </div>
+                
+                <!-- Solution 4 -->
+                <div class="solution-card">
+                    <h3><i class="fas fa-city"></i> Sustainable Cities</h3>
+                    <p>Design urban spaces with green buildings, public transport, and efficient waste management systems.</p>
+                </div>
+                
+                <!-- Solution 5 -->
+                <div class="solution-card">
+                    <h3><i class="fas fa-bolt"></i> Energy Efficiency</h3>
+                    <p>Implement technologies and practices that reduce energy consumption in buildings, transportation, and industry.</p>
+                </div>
+                
+                <!-- Solution 6 -->
+                <div class="solution-card">
+                    <h3><i class="fas fa-users"></i> Community Action</h3>
+                    <p>Local initiatives like tree planting, clean-ups, and education programs that create grassroots change.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta" id="take-action">
+        <div class="container">
+            <h2>Join the Movement for a Sustainable Future</h2>
+            <p>Every individual action counts. Together, we can address these challenges and create positive change for our planet.</p>
+            <a href="#contact" class="btn">Get Involved</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>GreenFuture</h3>
+                    <p>Dedicated to creating awareness about sustainability challenges and promoting practical solutions for a better tomorrow.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#challenges">Challenges</a></li>
+                        <li><a href="#solutions">Solutions</a></li>
+                        <li><a href="#take-action">Take Action</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Reports</a></li>
+                        <li><a href="#">Research Papers</a></li>
+                        <li><a href="#">Educational Materials</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Green St, Eco City</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@greenfuture.org</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 GreenFuture. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modal-title">Climate Change</h3>
+            <div id="modal-content">
+                <!-- Content will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav');
+        
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+            });
+        });
+        
+        // Back to Top Button
+        const backToTopBtn = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Modal Functionality
+        const modal = document.getElementById('modal');
+        const closeModal = document.querySelector('.close-modal');
+        
+        function openModal(challenge) {
+            // Set modal content based on which challenge was clicked
+            const modalTitle = document.getElementById('modal-title');
+            const modalContent = document.getElementById('modal-content');
+            
+            let title = '';
+            let content = '';
+            
+            switch(challenge) {
+                case 'climate-change':
+                    title = 'Climate Change';
+                    content = `
+                        <h4>The Challenge</h4>
+                        <p>Climate change refers to long-term shifts in temperatures and weather patterns, primarily caused by human activities like burning fossil fuels which increase greenhouse gas emissions.</p>
+                        <p><strong>Key Impacts:</strong></p>
+                        <ul>
+                            <li>Global temperature rise (1.1°C since pre-industrial times)</li>
+                            <li>More frequent and intense extreme weather events</li>
+                            <li>Rising sea levels threatening coastal communities</li>
+                            <li>Ocean acidification harming marine life</li>
+                        </ul>
+                        <h4>Potential Solutions</h4>
+                        <ul>
+                            <li>Transition to renewable energy sources</li>
+                            <li>Energy efficiency improvements</li>
+                            <li>Carbon capture and storage technologies</li>
+                            <li>Reforestation and forest conservation</li>
+                            <li>Sustainable transportation systems</li>
+                        </ul>
+                    `;
+                    break;
+                    
+                case 'biodiversity':
+                    title = 'Biodiversity Loss';
+                    content = `
+                        <h4>The Challenge</h4>
+                        <p>Biodiversity loss refers to the decline in the variety of life on Earth at all levels, from genes to ecosystems, due to human activities.</p>
+                        <p><strong>Key Facts:</strong></p>
+                        <ul>
+                            <li>Current extinction rate is 100-1000 times higher than natural background rates</li>
+                            <li>75% of land environment and 66% of marine environment significantly altered</li>
+                            <li>1 million species threatened with extinction</li>
+                            <li>85% of wetlands lost since 1700</li>
+                        </ul>
+                        <h4>Potential Solutions</h4>
+                        <ul>
+                            <li>Protect and expand natural habitats</li>
+                            <li>Sustainable agriculture and forestry</li>
+                            <li>Combat wildlife trafficking</li>
+                            <li>Reduce pollution and pesticide use</li>
+                            <li>Support indigenous conservation efforts</li>
+                        </ul>
+                    `;
+                    break;
+                    
+                case 'pollution':
+                    title = 'Pollution';
+                    content = `
+                        <h4>The Challenge</h4>
+                        <p>Pollution is the introduction of harmful materials into the environment, causing damage to ecosystems and human health.</p>
+                        <p><strong>Major Types:</strong></p>
+                        <ul>
+                            <li><strong>Air pollution:</strong> Causes 7 million premature deaths annually</li>
+                            <li><strong>Plastic pollution:</strong> 8 million tons enter oceans each year</li>
+                            <li><strong>Chemical pollution:</strong> Pesticides, heavy metals, and other toxins</li>
+                            <li><strong>Noise/light pollution:</strong> Disrupts ecosystems and wildlife</li>
+                        </ul>
+                        <h4>Potential Solutions</h4>
+                        <ul>
+                            <li>Circular economy approaches</li>
+                            <li>Cleaner production technologies</li>
+                            <li>Waste reduction and recycling programs</li>
+                            <li>Stricter environmental regulations</li>
+                            <li>Public awareness campaigns</li>
+                        </ul>
+                    `;
+                    break;
+                    
+                case 'resources':
+                    title = 'Resource Depletion';
+                    content = `
+                        <h4>The Challenge</h4>
+                        <p>Resource depletion occurs when we consume natural resources faster than they can be replenished, threatening future availability.</p>
+                        <p><strong>Critical Resources at Risk:</strong></p>
+                        <ul>
+                            <li><strong>Freshwater:</strong> 2.3 billion people live in water-stressed countries</li>
+                            <li><strong>Fossil fuels:</strong> Finite and contribute to climate change</li>
+                            <li><strong>Minerals:</strong> Many rare earth metals essential for technology</li>
+                            <li><strong>Soil:</strong> 33% of Earth's soils degraded from erosion</li>
+                        </ul>
+                        <h4>Potential Solutions</h4>
+                        <ul>
+                            <li>Sustainable resource management</li>
+                            <li>Alternative materials development</li>
+                            <li>Water conservation technologies</li>
+                            <li>Extended producer responsibility</li>
+                            <li>Dematerialization of economies</li>
+                        </ul>
+                    `;
+                    break;
+                    
+                case 'food':
+                    title = 'Food Security';
+                    content = `
+                        <h4>The Challenge</h4>
+                        <p>Food security exists when all people have access to sufficient, safe, nutritious food, but current systems face multiple threats.</p>
+                        <p><strong>Key Issues:</strong></p>
+                        <ul>
+                            <li>30% of food produced is lost or wasted</li>
+                            <li>Industrial agriculture degrades soils and ecosystems</li>
+                            <li>Climate change reduces crop yields</li>
+                            <li>800 million people undernourished while obesity rises</li>
+                        </ul>
+                        <h4>Potential Solutions</h4>
+                        <ul>
+                            <li>Regenerative agriculture practices</li>
+                            <li>Reduction of food waste</li>
+                            <li>Local and seasonal food systems</li>
+                            <li>Plant-based diet shifts</li>
+                            <li>Urban farming initiatives</li>
+                        </ul>
+                    `;
+                    break;
+                    
+                case 'urbanization':
+                    title = 'Urbanization';
+                    content = `
+                        <h4>The Challenge</h4>
+                        <p>Rapid urban growth creates environmental pressures while offering opportunities for sustainable development.</p>
+                        <p><strong>Urban Challenges:</strong></p>
+                        <ul>
+                            <li>Cities consume 75% of global energy and emit 80% of GHGs</li>
+                            <li>Urban sprawl destroys natural habitats</li>
+                            <li>Air pollution and heat island effects</li>
+                            <li>Infrastructure strain from population density</li>
+                        </ul>
+                        <h4>Potential Solutions</h4>
+                        <ul>
+                            <li>Compact, mixed-use urban design</li>
+                            <li>Green buildings and infrastructure</li>
+                            <li>Efficient public transportation</li>
+                            <li>Urban green spaces and parks</li>
+                            <li>Smart city technologies</li>
+                        </ul>
+                    `;
+                    break;
+            }
+            
+            modalTitle.textContent = title;
+            modalContent.innerHTML = content;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
