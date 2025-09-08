@@ -3,934 +3,891 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sustainability Challenges and Solutions</title>
+    <title>Vocabulary Quiz Master</title>
     <style>
-        /* Global Styles */
-        :root {
-            --primary-color: #2e7d32;
-            --secondary-color: #81c784;
-            --accent-color: #ff8f00;
-            --dark-color: #1b5e20;
-            --light-color: #e8f5e9;
-            --text-color: #333;
-            --white: #fff;
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
-            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #1a202c;
             line-height: 1.6;
-            background-color: var(--light-color);
         }
-        
-        a {
-            text-decoration: none;
-            color: var(--primary-color);
-        }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 2rem;
         }
-        
+
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1rem;
+            background: #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
         .btn {
-            display: inline-block;
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 10px 20px;
+            background: #667eea;
+            color: white;
             border: none;
-            border-radius: 5px;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-        }
-        
-        .btn:hover {
-            background: var(--dark-color);
-            transform: translateY(-3px);
-        }
-        
-        /* Header */
-        header {
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 20px 0;
-            position: fixed;
             width: 100%;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
         }
-        
-        .header-container {
+
+        .btn:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+
+        .quiz-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        
-        nav ul {
+
+        .stats {
             display: flex;
-            list-style: none;
+            gap: 2rem;
+            font-size: 0.9rem;
         }
-        
-        nav ul li {
-            margin-left: 30px;
+
+        .stat-item {
+            text-align: center;
         }
-        
-        nav ul li a {
-            color: var(--white);
-            font-weight: 500;
+
+        .stat-value {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #718096;
+            font-size: 0.8rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .question-card {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .badge-synonym {
+            background: #667eea;
+            color: white;
+        }
+
+        .badge-antonym {
+            background: #764ba2;
+            color: white;
+        }
+
+        .question-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #2d3748;
+        }
+
+        .options-grid {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .option-btn {
+            padding: 1.5rem;
+            text-align: left;
+            font-size: 1.1rem;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
             transition: all 0.3s ease;
         }
-        
-        nav ul li a:hover {
-            color: var(--secondary-color);
+
+        .option-btn:hover {
+            border-color: #667eea;
+            background: #f7fafc;
         }
-        
-        .menu-toggle {
-            display: none;
-            cursor: pointer;
+
+        .option-btn.selected {
+            border-color: #667eea;
+            background: #edf2f7;
         }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
+
+        .option-btn.correct {
+            border-color: #38a169;
+            background: #f0fff4;
+            color: #38a169;
+        }
+
+        .option-btn.incorrect {
+            border-color: #e53e3e;
+            background: #fed7d7;
+            color: #e53e3e;
+        }
+
+        .option-btn:disabled {
+            cursor: not-allowed;
+        }
+
+        .feedback {
+            padding: 1.5rem;
+            border-radius: 8px;
+            background: #f7fafc;
+            border-left: 4px solid #667eea;
+        }
+
+        .feedback-header {
             display: flex;
             align-items: center;
-            text-align: center;
-            color: var(--white);
-            margin-top: 68px;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
         }
-        
-        .hero-content {
-            max-width: 800px;
+
+        .feedback.correct {
+            background: #f0fff4;
+            border-left-color: #38a169;
+            color: #38a169;
+        }
+
+        .feedback.incorrect {
+            background: #fed7d7;
+            border-left-color: #e53e3e;
+            color: #e53e3e;
+        }
+
+        .mode-selection {
+            max-width: 400px;
             margin: 0 auto;
         }
-        
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
+
+        .mode-selection h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #2d3748;
         }
-        
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
+
+        .mode-selection p {
+            color: #718096;
+            margin-bottom: 2rem;
         }
-        
-        /* Challenges Section */
-        .section {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .section-title h2 {
-            font-size: 36px;
-            color: var(--primary-color);
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 3px;
-            background: var(--accent-color);
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .challenges-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .challenge-card {
-            background: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .challenge-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .challenge-img {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .challenge-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .challenge-card:hover .challenge-img img {
-            transform: scale(1.1);
-        }
-        
-        .challenge-content {
-            padding: 20px;
-        }
-        
-        .challenge-content h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-        
-        /* Solutions Section */
-        .solutions {
-            background: var(--primary-color);
-            color: var(--white);
-        }
-        
-        .solutions .section-title h2 {
-            color: var(--white);
-        }
-        
-        .solutions .section-title h2::after {
-            background: var(--accent-color);
-        }
-        
-        .solutions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .solution-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-            padding: 30px;
-            transition: all 0.3s ease;
-        }
-        
-        .solution-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-        .solution-card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .solution-card h3 i {
-            margin-right: 10px;
-            color: var(--accent-color);
-        }
-        
-        /* Call to Action */
-        .cta {
-            text-align: center;
-            padding: 60px 0;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            color: var(--white);
-        }
-        
-        .cta h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-        
-        .cta p {
-            font-size: 20px;
-            margin-bottom: 30px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark-color);
-            color: var(--white);
-            padding: 50px 0 20px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column h3 {
-            font-size: 20px;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            width: 30px;
-            height: 2px;
-            background: var(--accent-color);
-            bottom: 0;
-            left: 0;
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-column ul li a {
-            color: var(--secondary-color);
-            transition: all 0.3s ease;
-        }
-        
-        .footer-column ul li a:hover {
-            color: var(--accent-color);
-            padding-left: 5px;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--white);
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            background: var(--accent-color);
-            transform: translateY(-3px);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 14px;
-        }
-        
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--primary-color);
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 99;
-        }
-        
-        .back-to-top.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .back-to-top:hover {
-            background: var(--dark-color);
-            transform: translateY(-5px);
-        }
-        
-        /* Modal */
-        .modal {
+
+        .hidden {
             display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
         }
-        
-        .modal-content {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 10px;
-            max-width: 800px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 24px;
+
+        /* High contrast button styles */
+        .outline-button {
+            background-color: #ffffff;
+            border: 2px solid #000000;
+            color: #000000;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
-            color: var(--text-color);
             transition: all 0.3s ease;
+            width: 100%;
+            margin-bottom: 1rem;
         }
-        
-        .close-modal:hover {
-            color: var(--accent-color);
-            transform: rotate(90deg);
+
+        .outline-button:hover {
+            background-color: #000000;
+            color: #ffffff;
         }
-        
-        .modal h3 {
-            font-size: 28px;
-            color: var(--primary-color);
-            margin-bottom: 20px;
+
+        .outline-button.active {
+            background-color: #000000;
+            color: #ffffff;
         }
-        
-        /* Responsive Styles */
+
+        .small-outline-button {
+            background-color: #ffffff;
+            border: 2px solid #000000;
+            color: #000000;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: auto;
+            margin-right: 1rem;
+        }
+
+        .small-outline-button:hover {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
         @media (max-width: 768px) {
-            .header-container {
-                padding: 0 15px;
+            .container {
+                padding: 1rem;
             }
-            
-            nav {
-                position: fixed;
-                top: 68px;
-                left: -100%;
-                width: 80%;
-                height: calc(100vh - 68px);
-                background: var(--dark-color);
-                transition: all 0.5s ease;
+
+            .header h1 {
+                font-size: 2rem;
             }
-            
-            nav.active {
-                left: 0;
+
+            .features-grid {
+                grid-template-columns: 1fr;
             }
-            
-            nav ul {
+
+            .quiz-header {
                 flex-direction: column;
-                padding: 30px;
+                align-items: stretch;
             }
-            
-            nav ul li {
-                margin: 15px 0;
+
+            .stats {
+                justify-content: center;
             }
-            
-            .menu-toggle {
-                display: block;
-            }
-            
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .hero p {
-                font-size: 18px;
-            }
-            
-            .section-title h2 {
-                font-size: 30px;
-            }
-            
-            .cta h2 {
-                font-size: 30px;
-            }
-            
-            .cta p {
-                font-size: 18px;
+
+            .question-title {
+                font-size: 1.4rem;
             }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">GreenFuture</div>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
+    <div class="container">
+        <!-- Start Screen -->
+        <div id="startScreen">
+            <div class="header">
+                <h1>Vocabulary Quiz Master</h1>
+                <p>Test your knowledge of synonyms and antonyms with our comprehensive vocabulary quiz</p>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#challenges">Challenges</a></li>
-                    <li><a href="#solutions">Solutions</a></li>
-                    <li><a href="#take-action">Take Action</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Sustainability Challenges and Solutions</h1>
-                <p>Discover the major environmental challenges our planet faces and learn about practical solutions to create a sustainable future for generations to come.</p>
-                <a href="#challenges" class="btn">Explore Challenges</a>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>400+ Words</h3>
+                    <p>Comprehensive vocabulary from A to Z</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Multiple Modes</h3>
+                    <p>Practice synonyms, antonyms, or both</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Track Progress</h3>
+                    <p>Monitor your accuracy and streaks</p>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Challenges Section -->
-    <section class="section" id="challenges">
-        <div class="container">
-            <div class="section-title">
-                <h2>Key Sustainability Challenges</h2>
-            </div>
-            <div class="challenges-grid">
-                <!-- Challenge 1 -->
-                <div class="challenge-card" onclick="openModal('climate-change')">
-                    <div class="challenge-img">
-                        <img src="https://images.unsplash.com/photo-1612536057832-2ff7ead58194?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Climate Change">
-                    </div>
-                    <div class="challenge-content">
-                        <h3>Climate Change</h3>
-                        <p>Rising global temperatures, extreme weather events, and melting ice caps threaten ecosystems worldwide.</p>
-                    </div>
-                </div>
+            <div class="card mode-selection">
+                <h2>Choose Quiz Mode</h2>
+                <p>Select how you want to practice vocabulary</p>
                 
-                <!-- Challenge 2 -->
-                <div class="challenge-card" onclick="openModal('biodiversity')">
-                    <div class="challenge-img">
-                        <img src="https://images.unsplash.com/photo-1589595363745-d842812a9db7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Biodiversity Loss">
-                    </div>
-                    <div class="challenge-content">
-                        <h3>Biodiversity Loss</h3>
-                        <p>Habitat destruction and pollution are causing species extinction at an alarming rate.</p>
-                    </div>
-                </div>
+                <!-- Using new high-contrast button classes -->
+                <button class="outline-button" id="synonymsMode">
+                    📚 Synonyms Only
+                </button>
+                <button class="outline-button" id="antonymsMode">
+                    🎯 Antonyms Only
+                </button>
+                <button class="outline-button active" id="mixedMode">
+                    🏆 Mixed Practice
+                </button>
                 
-                <!-- Challenge 3 -->
-                <div class="challenge-card" onclick="openModal('pollution')">
-                    <div class="challenge-img">
-                        <img src="https://images.unsplash.com/photo-1584473457406-6240486418e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pollution">
-                    </div>
-                    <div class="challenge-content">
-                        <h3>Pollution</h3>
-                        <p>Plastic waste, air pollution, and toxic chemicals are contaminating our environment.</p>
-                    </div>
-                </div>
-                
-                <!-- Challenge 4 -->
-                <div class="challenge-card" onclick="openModal('resources')">
-                    <div class="challenge-img">
-                        <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Resource Depletion">
-                    </div>
-                    <div class="challenge-content">
-                        <h3>Resource Depletion</h3>
-                        <p>Overconsumption of water, minerals, and fossil fuels is exhausting Earth's finite resources.</p>
-                    </div>
-                </div>
-                
-                <!-- Challenge 5 -->
-                <div class="challenge-card" onclick="openModal('food')">
-                    <div class="challenge-img">
-                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Food Security">
-                    </div>
-                    <div class="challenge-content">
-                        <h3>Food Security</h3>
-                        <p>Industrial farming and food waste are straining our agricultural systems.</p>
-                    </div>
-                </div>
-                
-                <!-- Challenge 6 -->
-                <div class="challenge-card" onclick="openModal('urbanization')">
-                    <div class="challenge-img">
-                        <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Urbanization">
-                    </div>
-                    <div class="challenge-content">
-                        <h3>Urbanization</h3>
-                        <p>Rapid city growth creates infrastructure stress and environmental degradation.</p>
-                    </div>
-                </div>
+                <button class="btn" id="startQuizBtn">Start Quiz</button>
             </div>
         </div>
-    </section>
 
-    <!-- Solutions Section -->
-    <section class="section solutions" id="solutions">
-        <div class="container">
-            <div class="section-title">
-                <h2>Practical Solutions</h2>
-            </div>
-            <div class="solutions-grid">
-                <!-- Solution 1 -->
-                <div class="solution-card">
-                    <h3><i class="fas fa-recycle"></i> Circular Economy</h3>
-                    <p>Transition from a linear "take-make-waste" model to a circular system where materials are reused and recycled indefinitely.</p>
-                </div>
-                
-                <!-- Solution 2 -->
-                <div class="solution-card">
-                    <h3><i class="fas fa-solar-panel"></i> Renewable Energy</h3>
-                    <p>Shift from fossil fuels to solar, wind, hydro, and other clean energy sources to reduce carbon emissions.</p>
-                </div>
-                
-                <!-- Solution 3 -->
-                <div class="solution-card">
-                    <h3><i class="fas fa-leaf"></i> Regenerative Agriculture</h3>
-                    <p>Farming practices that restore soil health, increase biodiversity, and improve water cycles while producing food.</p>
-                </div>
-                
-                <!-- Solution 4 -->
-                <div class="solution-card">
-                    <h3><i class="fas fa-city"></i> Sustainable Cities</h3>
-                    <p>Design urban spaces with green buildings, public transport, and efficient waste management systems.</p>
-                </div>
-                
-                <!-- Solution 5 -->
-                <div class="solution-card">
-                    <h3><i class="fas fa-bolt"></i> Energy Efficiency</h3>
-                    <p>Implement technologies and practices that reduce energy consumption in buildings, transportation, and industry.</p>
-                </div>
-                
-                <!-- Solution 6 -->
-                <div class="solution-card">
-                    <h3><i class="fas fa-users"></i> Community Action</h3>
-                    <p>Local initiatives like tree planting, clean-ups, and education programs that create grassroots change.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="cta" id="take-action">
-        <div class="container">
-            <h2>Join the Movement for a Sustainable Future</h2>
-            <p>Every individual action counts. Together, we can address these challenges and create positive change for our planet.</p>
-            <a href="#contact" class="btn">Get Involved</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>GreenFuture</h3>
-                    <p>Dedicated to creating awareness about sustainability challenges and promoting practical solutions for a better tomorrow.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <!-- Quiz Screen -->
+        <div id="quizScreen" class="hidden">
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <div>
+                        <!-- Using new high-contrast button class -->
+                        <button class="small-outline-button" id="newQuizBtn">🔄 New Quiz</button>
+                        <span class="badge badge-synonym" id="questionNumber">Question 1</span>
+                    </div>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-value" id="accuracy">0%</div>
+                            <div class="stat-label">Accuracy</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="streak">0</div>
+                            <div class="stat-label">Streak</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="bestStreak">0</div>
+                            <div class="stat-label">Best</div>
+                        </div>
                     </div>
                 </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#challenges">Challenges</a></li>
-                        <li><a href="#solutions">Solutions</a></li>
-                        <li><a href="#take-action">Take Action</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Resources</h3>
-                    <ul>
-                        <li><a href="#">Reports</a></li>
-                        <li><a href="#">Research Papers</a></li>
-                        <li><a href="#">Educational Materials</a></li>
-                        <li><a href="#">Case Studies</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Green St, Eco City</li>
-                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
-                        <li><i class="fas fa-envelope"></i> info@greenfuture.org</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2023 GreenFuture. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
 
-    <!-- Back to Top Button -->
-    <div class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
 
-    <!-- Modal -->
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h3 id="modal-title">Climate Change</h3>
-            <div id="modal-content">
-                <!-- Content will be loaded here by JavaScript -->
+                <div class="card question-card">
+                    <div class="badge" id="questionType">Synonym</div>
+                    <h2 class="question-title" id="questionTitle">Loading...</h2>
+                    
+                    <div class="options-grid" id="optionsGrid">
+                        <!-- Options will be populated by JavaScript -->
+                    </div>
+
+                    <div class="feedback hidden" id="feedback">
+                        <div class="feedback-header">
+                            <span id="feedbackIcon">✓</span>
+                            <span id="feedbackText">Correct!</span>
+                        </div>
+                        <p id="feedbackDetail"></p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Mobile Menu Toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const nav = document.querySelector('nav');
-        
-        menuToggle.addEventListener('click', () => {
-            nav.classList.toggle('active');
+        const vocabularyData = [
+            { word: "Abate", synonyms: ["Moderate", "decrease"], antonyms: ["Aggravate"] },
+            { word: "Adhere", synonyms: ["Comply", "observe"], antonyms: ["Condemn", "disjoin"] },
+            { word: "Abolish", synonyms: ["Abrogate", "annual"], antonyms: ["Setup", "Establish"] },
+            { word: "Acumen", synonyms: ["Awareness", "brilliance"], antonyms: ["Stupidity", "Ignorance"] },
+            { word: "Abash", synonyms: ["Disconcert", "rattle"], antonyms: ["Uphold", "Discompose"] },
+            { word: "Absolve", synonyms: ["Pardon", "forgive"], antonyms: ["Compel", "Accuse"] },
+            { word: "Abjure", synonyms: ["Forsake", "renounce"], antonyms: ["Approve", "Sanction"] },
+            { word: "Abject", synonyms: ["Despicable", "servile"], antonyms: ["Commendable", "Praiseworthy"] },
+            { word: "Abound", synonyms: ["Flourish", "proliferate"], antonyms: ["Deficient", "Destitute"] },
+            { word: "Abortive", synonyms: ["Vain", "unproductive"], antonyms: ["Productive"] },
+            { word: "Acrimony", synonyms: ["Harshness", "bitterness"], antonyms: ["Courtesy", "Benevolence"] },
+            { word: "Accord", synonyms: ["Agreement", "harmony"], antonyms: ["Discord"] },
+            { word: "Adjunct", synonyms: ["Joined", "Added"], antonyms: ["Separated", "Subtracted"] },
+            { word: "Adversity", synonyms: ["Misfortune", "calamity"], antonyms: ["Prosperity", "Fortune"] },
+            { word: "Adherent", synonyms: ["Follower", "disciple"], antonyms: ["Rival", "Adversary"] },
+            { word: "Adamant", synonyms: ["Stubborn", "inflexible"], antonyms: ["Flexible", "Soft"] },
+            { word: "Admonish", synonyms: ["Counsel", "reprove"], antonyms: ["Approve", "Applaud"] },
+            { word: "Allay", synonyms: ["Pacify", "soothe"], antonyms: ["Aggravate", "Excite"] },
+            { word: "Alien", synonyms: ["Foreigner", "outsider"], antonyms: ["Native", "Resident"] },
+            { word: "Ascend", synonyms: ["Climb", "Escalate"], antonyms: ["Descend", "Decline"] },
+            { word: "Alleviate", synonyms: ["Abate", "relieve"], antonyms: ["Aggravate", "Enhance"] },
+            { word: "Allure", synonyms: ["Entice", "fascinate"], antonyms: ["Repulse", "Repel"] },
+            { word: "Arraign", synonyms: ["Incriminate", "indict"], antonyms: ["Exculpate", "Pardon"] },
+            { word: "Amplify", synonyms: ["Augment", "deepen"], antonyms: ["Lessen", "Contract"] },
+            { word: "Axiom", synonyms: ["Adage", "truism"], antonyms: ["Absurdity", "Blunder"] },
+            { word: "Audacity", synonyms: ["Boldness", "Courage"], antonyms: ["Mildness", "Cowardice"] },
+            { word: "Authentic", synonyms: ["Accurate", "credible"], antonyms: ["Fictitious", "unreal"] },
+            { word: "Awkward", synonyms: ["Rude", "blundering"], antonyms: ["Adroit", "clever"] },
+            { word: "Barbarous", synonyms: ["Frustrate", "perplex"], antonyms: ["Civilized"] },
+            { word: "Bleak", synonyms: ["Grim", "Austere"], antonyms: ["Bright", "Pleasant"] },
+            { word: "Bewitching", synonyms: ["Alluring", "charming"], antonyms: ["Repulsive", "Repugnant"] },
+            { word: "Baroque", synonyms: ["Florid", "gilt"], antonyms: ["Plain", "unadorned"] },
+            { word: "Brittle", synonyms: ["Breakable", "crisp"], antonyms: ["Tough", "Enduring"] },
+            { word: "Barrier", synonyms: ["Barricade", "Obstacle"], antonyms: ["Link", "Assistance"] },
+            { word: "Baffle", synonyms: ["Astound", "Faze"], antonyms: ["Facilitate", "Clarify"] },
+            { word: "Bustle", synonyms: ["Commotion", "Tumult"], antonyms: ["Slowness", "Quiet"] },
+            { word: "Barren", synonyms: ["Desolate", "Sterile"], antonyms: ["Damp", "Fertile"] },
+            { word: "Bawdy", synonyms: ["Erotic", "Coarse"], antonyms: ["Decent", "Moral"] },
+            { word: "Bind", synonyms: ["Predicament"], antonyms: ["Release"] },
+            { word: "Batty", synonyms: ["Insane", "silly"], antonyms: ["Sane"] },
+            { word: "Benevolent", synonyms: ["Benign", "Generous"], antonyms: ["Malevolent", "Miserly"] },
+            { word: "Befogged", synonyms: ["Becloud", "Dim"], antonyms: ["Clear headed", "Uncloud"] },
+            { word: "Base", synonyms: ["Vulgar", "Coarse"], antonyms: ["Summit", "Noble"] },
+            { word: "Benign", synonyms: ["Favorable", "friendly"], antonyms: ["Malignant", "Cruel"] },
+            { word: "Busy", synonyms: ["Active", "Engaged"], antonyms: ["Idle", "Lazy"] },
+            { word: "Bold", synonyms: ["Adventurous"], antonyms: ["Timid"] },
+            { word: "Boisterous", synonyms: ["Clamorous", "rowdy"], antonyms: ["Placid", "Calm"] },
+            { word: "Blunt", synonyms: ["Dull", "Insensitive"], antonyms: ["Keen", "Sharp"] },
+            { word: "Callous", synonyms: ["obdurate", "unfeeling"], antonyms: ["Compassionate", "Tender"] },
+            { word: "Capable", synonyms: ["competent", "able"], antonyms: ["Incompetent", "Inept"] },
+            { word: "Calamity", synonyms: ["adversity", "misfortune"], antonyms: ["Fortune"] },
+            { word: "Calculating", synonyms: ["Canny", "Devious"], antonyms: ["Artless", "honest"] },
+            { word: "Calumny", synonyms: ["defamation", "aspersion"], antonyms: ["Commendation", "Praise"] },
+            { word: "Captivity", synonyms: ["imprisonment", "confinement"], antonyms: ["Freedom", "Liberty"] },
+            { word: "Captivate", synonyms: ["Charm", "fascinate"], antonyms: ["Disillusion", "offend"] },
+            { word: "Chaste", synonyms: ["virtuous", "pure"], antonyms: ["Sullied", "Lustful"] },
+            { word: "Cease", synonyms: ["terminate", "desist"], antonyms: ["Begin", "Originate"] },
+            { word: "Compassion", synonyms: ["kindness", "sympathy"], antonyms: ["Cruelty", "Barbarity"] },
+            { word: "Chastise", synonyms: ["punish", "admonish"], antonyms: ["Cheer", "encourage"] },
+            { word: "Concede", synonyms: ["yield", "permit"], antonyms: ["Deny", "reject"] },
+            { word: "Comprise", synonyms: ["include", "contain"], antonyms: ["Reject", "lack"] },
+            { word: "Consent", synonyms: ["agree", "permit"], antonyms: ["Object", "Disagree"] },
+            { word: "Concur", synonyms: ["approve", "agree"], antonyms: ["Differ", "disagree"] },
+            { word: "Consolidate", synonyms: ["solidify", "strengthen"], antonyms: ["Separate", "Weaken"] },
+            { word: "Consequence", synonyms: ["effect", "outcome"], antonyms: ["Origin", "Start"] },
+            { word: "Contempt", synonyms: ["scorn", "disregard"], antonyms: ["Regard", "Praise"] },
+            { word: "Conspicuous", synonyms: ["prominent", "obvious"], antonyms: ["Concealed", "hidden"] },
+            { word: "Contrary", synonyms: ["dissimilar", "conflicting"], antonyms: ["Similar", "Alike"] },
+            { word: "Contradict", synonyms: ["deny", "oppose"], antonyms: ["Approve", "Confirm"] },
+            { word: "Calm", synonyms: ["Harmonious", "unruffled"], antonyms: ["Stormy", "turbulent"] },
+            { word: "Candid", synonyms: ["Blunt", "bluff"], antonyms: ["Evasive"] },
+            { word: "Camouflage", synonyms: ["Cloak", "disguise"], antonyms: ["Reveal"] },
+            { word: "Carnal", synonyms: ["Earthly", "fleshly"], antonyms: ["Spiritual"] },
+            { word: "Celebrated", synonyms: ["Acclaimed", "lionized"], antonyms: ["Unknown", "Inglorious"] },
+            { word: "Catholic", synonyms: ["Generic", "liberal"], antonyms: ["Narrow-minded"] },
+            { word: "Censure", synonyms: ["Rebuke", "reprimand"], antonyms: ["Praise", "Acceptance"] },
+            { word: "Cement", synonyms: ["Plaster", "mortar"], antonyms: ["Disintegrate"] },
+            { word: "Clandestine", synonyms: ["Covert", "fruitive"], antonyms: ["Open", "Legal"] },
+            { word: "Cheap", synonyms: ["Competitive", "Inexpensive"], antonyms: ["Dear", "unreasonable"] },
+            { word: "Coarse", synonyms: ["Bawdy", "Boorish"], antonyms: ["Fine", "Chaste"] },
+            { word: "Classic", synonyms: ["Simple", "Typical"], antonyms: ["Romantic", "Unusual"] },
+            { word: "Compact", synonyms: ["Bunched", "thick"], antonyms: ["Loose", "Diffuse"] },
+            { word: "Comic", synonyms: ["Clown", "Jester"], antonyms: ["Tragic", "tragedian"] },
+            { word: "Conceit", synonyms: ["Egotism", "Immodesty"], antonyms: ["Modesty"] },
+            { word: "Compress", synonyms: ["Abbreviate", "Shrink"], antonyms: ["Amplify", "Expand"] },
+            { word: "Condemn", synonyms: ["Castigate", "Chide"], antonyms: ["Approve", "Praise"] },
+            { word: "Concord", synonyms: ["Agreement", "accord"], antonyms: ["Discord"] },
+            { word: "Confident", synonyms: ["Bold", "Undaunted"], antonyms: ["Diffident", "cowardly"] },
+            { word: "Creation", synonyms: ["Formation", "foundation"], antonyms: ["Destruction"] },
+            { word: "Courtesy", synonyms: ["Generosity", "Reverence"], antonyms: ["Disdain", "Rudeness"] },
+            { word: "Cunning", synonyms: ["Acute", "Smart"], antonyms: ["Nave", "Coarse"] },
+            { word: "Decipher", synonyms: ["interpret", "reveal"], antonyms: ["Misinterpret", "distort"] },
+            { word: "Decay", synonyms: ["Collapse", "decompose"], antonyms: ["Flourish", "Progress"] },
+            { word: "Deceit", synonyms: ["deception", "artifice"], antonyms: ["Veracity", "Sincerity"] },
+            { word: "Defray", synonyms: ["spend", "pay"], antonyms: ["Disclaim", "Repudiate"] },
+            { word: "Defile", synonyms: ["contaminate", "pollute"], antonyms: ["Purify", "sanctity"] },
+            { word: "Demolish", synonyms: ["Ruin", "devastate"], antonyms: ["Repair", "construct"] },
+            { word: "Deliberate", synonyms: ["cautious", "intentional"], antonyms: ["Rash", "Sudden"] },
+            { word: "Deride", synonyms: ["mock", "taunt"], antonyms: ["Inspire", "Encourage"] },
+            { word: "Deprive", synonyms: ["despoil", "divest"], antonyms: ["Restore", "Renew"] },
+            { word: "Dissuade", synonyms: ["Remonstrate", "Counsel"], antonyms: ["Insite", "Persuade"] },
+            { word: "Disdain", synonyms: ["detest", "despise"], antonyms: ["Approve", "praise"] },
+            { word: "Dense", synonyms: ["Opaque", "piled"], antonyms: ["Sparse", "brainy"] },
+            { word: "Denounce", synonyms: ["Blame", "boycott"], antonyms: ["Defend"] },
+            { word: "Despair", synonyms: ["Depression", "misery"], antonyms: ["Contentment", "Hope"] },
+            { word: "Derogatory", synonyms: ["Sarcastic", "critical"], antonyms: ["Laudatory", "appreciative"] },
+            { word: "Docile", synonyms: ["Pliable", "pliant"], antonyms: ["Headstrong", "obstinate"] },
+            { word: "Destructive", synonyms: ["Catastrophic", "pernicious"], antonyms: ["Creative", "Constructive"] },
+            { word: "Dwarf", synonyms: ["Diminutive", "Petite"], antonyms: ["Huge", "Giant"] },
+            { word: "Eclipse", synonyms: ["Diminution", "Dimming"], antonyms: ["Shine", "eclipse"] },
+            { word: "Eager", synonyms: ["Keen", "acquisitive"], antonyms: ["Indifferent", "apathetic"] },
+            { word: "Ecstasy", synonyms: ["delight", "exultation"], antonyms: ["Despair", "Calamity"] },
+            { word: "Eccentric", synonyms: ["strange", "abnormal"], antonyms: ["Natural", "Conventional"] },
+            { word: "Encumbrance", synonyms: ["hindrance", "obstacle"], antonyms: ["Incentive", "stimulant"] },
+            { word: "Efface", synonyms: ["destroy", "obliterate"], antonyms: ["Retain", "Maintain"] },
+            { word: "Eloquence", synonyms: ["expression", "fluency"], antonyms: ["Halting", "Stammering"] },
+            { word: "Enormous", synonyms: ["colossal", "mammoth"], antonyms: ["Diminutive", "negligible"] },
+            { word: "Endeavour", synonyms: ["undertake", "aspire"], antonyms: ["Cease", "quit"] },
+            { word: "Equivocal", synonyms: ["uncertain", "hazy"], antonyms: ["Obvious", "lucid"] },
+            { word: "Epitome", synonyms: ["precise", "example"], antonyms: ["Increment", "expansion"] },
+            { word: "Eradicate", synonyms: ["destroy", "exterminate"], antonyms: ["Secure", "plant"] },
+            { word: "Fallacy", synonyms: ["delusion", "mistake"], antonyms: ["Veracity", "Truth"] },
+            { word: "Fabricate", synonyms: ["construct", "produce"], antonyms: ["Destroy", "Dismantle"] },
+            { word: "Fanatical", synonyms: ["narrow-minded", "biased"], antonyms: ["Liberal", "Tolerant"] },
+            { word: "Falter", synonyms: ["stumble", "demur"], antonyms: ["Persist", "Endure"] },
+            { word: "Ferocious", synonyms: ["cruel", "fierce"], antonyms: ["Gentle", "Sympathetic"] },
+            { word: "Feeble", synonyms: ["weak", "frail"], antonyms: ["Strong", "Robust"] },
+            { word: "Fluctuate", synonyms: ["deflect", "vacillate"], antonyms: ["Stabilize", "resolve"] },
+            { word: "Feud", synonyms: ["strife", "quarrel"], antonyms: ["Harmony", "fraternity"] },
+            { word: "Fragile", synonyms: ["weak", "infirm"], antonyms: ["Enduring", "Tough"] },
+            { word: "Forsake", synonyms: ["desert", "renounce"], antonyms: ["Hold", "maintain"] },
+            { word: "Frivolous", synonyms: ["petty", "worthless"], antonyms: ["Solemn", "significant"] },
+            { word: "Frantic", synonyms: ["violent", "agitated"], antonyms: ["Subdued", "gentle"] },
+            { word: "Frugality", synonyms: ["economy", "providence"], antonyms: ["Lavishness", "extravagance"] },
+            { word: "Gloom", synonyms: ["obscurity", "darkness"], antonyms: ["Delight", "mirth"] },
+            { word: "Gather", synonyms: ["Converge", "huddle"], antonyms: ["Disperse", "Dissemble"] },
+            { word: "Gorgeous", synonyms: ["magnificent", "dazzling"], antonyms: ["Dull", "unpretentious"] },
+            { word: "Glut", synonyms: ["stuff", "satiate"], antonyms: ["Starve", "abstain"] },
+            { word: "Grisly", synonyms: ["disgusting", "atrocious"], antonyms: ["Pleasing", "attractive"] },
+            { word: "Gracious", synonyms: ["courteous", "beneficent"], antonyms: ["Rude", "Unforgiving"] },
+            { word: "Guile", synonyms: ["cunning", "deceit"], antonyms: ["Honesty", "frankness"] },
+            { word: "Grudge", synonyms: ["hatred", "aversion"], antonyms: ["Benevolence", "Affection"] },
+            { word: "Genuine", synonyms: ["Absolute", "Factual"], antonyms: ["Spurious"] },
+            { word: "Generosity", synonyms: ["Altruism", "bounty"], antonyms: ["Stinginess", "greed"] },
+            { word: "Glory", synonyms: ["Dignity", "renown"], antonyms: ["Shame", "Disgrace"] },
+            { word: "Gloomy", synonyms: ["Bleak", "cloudy"], antonyms: ["Gay", "Bright"] },
+            { word: "Harass", synonyms: ["irritate", "molest"], antonyms: ["Assist", "comfort"] },
+            { word: "Hamper", synonyms: ["retard", "prevent"], antonyms: ["Promote", "facilitate"] },
+            { word: "Hazard", synonyms: ["Peril", "danger"], antonyms: ["Conviction", "security"] },
+            { word: "Hapless", synonyms: ["unfortunate", "ill-fated"], antonyms: ["Fortunate", "Lucky"] },
+            { word: "Haughty", synonyms: ["arrogant", "pompous"], antonyms: ["Humble", "Submissive"] },
+            { word: "Hideous", synonyms: ["frightful", "shocking"], antonyms: ["Attractive", "alluring"] },
+            { word: "Heretic", synonyms: ["non-conformist", "secularist"], antonyms: ["Conformable", "religious"] },
+            { word: "Harmony", synonyms: ["Conformity", "Amicability"], antonyms: ["Discord", "discord"] },
+            { word: "Hamstrung", synonyms: ["Cripple", "Debilitate"], antonyms: ["Strengthen", "Encourage"] },
+            { word: "Honor", synonyms: ["Adoration", "Reverence"], antonyms: ["Denunciation", "Shame"] },
+            { word: "Hasty", synonyms: ["Abrupt", "Impetuous"], antonyms: ["Leisurely", "Cautious"] },
+            { word: "Humility", synonyms: ["Resignation", "Fawning"], antonyms: ["Boldness", "Pride"] },
+            { word: "Humble", synonyms: ["Meek", "Timid"], antonyms: ["Proud", "Assertive"] },
+            { word: "Impenitent", synonyms: ["Uncontrite", "Obdurate"], antonyms: ["Repentant"] },
+            { word: "Hypocrisy", synonyms: ["Deception", "Pharisaism"], antonyms: ["Sincerity", "frankness"] },
+            { word: "Indifferent", synonyms: ["Equitable", "Haughty"], antonyms: ["Partial", "Biased"] },
+            { word: "Impulsive", synonyms: ["Flaky", "Impetuous"], antonyms: ["Cautious", "Deliberate"] },
+            { word: "Infernal", synonyms: ["Damned", "Accursed"], antonyms: ["Heavenly"] },
+            { word: "Indigent", synonyms: ["Destitute", "Impoverished"], antonyms: ["Rich", "Affluent"] },
+            { word: "Interesting", synonyms: ["Enchanting", "Riveting"], antonyms: ["Dull", "Uninteresting"] },
+            { word: "Insipid", synonyms: ["Tedious", "Prosaic"], antonyms: ["Pleasing", "appetizing"] },
+            { word: "Immense", synonyms: ["huge", "enormous"], antonyms: ["Puny", "Insignificant"] },
+            { word: "Immaculate", synonyms: ["unsullied", "spotless"], antonyms: ["Defiled", "Tarnished"] },
+            { word: "Imminent", synonyms: ["impending", "brewing"], antonyms: ["Distant", "Receding"] },
+            { word: "Immerse", synonyms: ["submerge", "involve"], antonyms: ["Emerge", "uncover"] },
+            { word: "Impair", synonyms: ["diminish", "deteriorate"], antonyms: ["Restore", "Revive"] },
+            { word: "Immunity", synonyms: ["prerogative", "privilege"], antonyms: ["Blame", "Censure"] },
+            { word: "Impediment", synonyms: ["hurdle", "obstruction"], antonyms: ["Assistant", "Concurrence"] },
+            { word: "Impartial", synonyms: ["just", "unbiased"], antonyms: ["Prejudiced", "Biased"] },
+            { word: "Impute", synonyms: ["attribute", "ascribe"], antonyms: ["Exculpate", "support"] },
+            { word: "Impious", synonyms: ["irreligious", "unholy"], antonyms: ["Pious", "Devout"] },
+            { word: "Incompetent", synonyms: ["inefficient", "unskilled"], antonyms: ["Dexterous", "Skilled"] },
+            { word: "Inclination", synonyms: ["disposition", "affection"], antonyms: ["Indifference", "Disinclination"] },
+            { word: "Inevitable", synonyms: ["unavoidable", "ascertained"], antonyms: ["Unlikely", "Doubtful"] },
+            { word: "Incongruous", synonyms: ["inappropriate", "absurd"], antonyms: ["Compatible", "harmonious"] },
+            { word: "Ingenuous", synonyms: ["undisguised", "naive"], antonyms: ["Wily", "Craftly"] },
+            { word: "Infringe", synonyms: ["violate", "encroach"], antonyms: ["Comply", "Concur"] },
+            { word: "Insinuate", synonyms: ["allude", "hint"], antonyms: ["Conceal", "Camouflage"] },
+            { word: "Instill", synonyms: ["inculcate", "inject"], antonyms: ["Eradicate", "extract"] },
+            { word: "Insolvent", synonyms: ["indigent", "destitute"], antonyms: ["Wealthy", "solvent"] },
+            { word: "Intrigue", synonyms: ["scheme", "conspiracy"], antonyms: ["Candor", "Sincerity"] },
+            { word: "Intricate", synonyms: ["tangled", "complicated"], antonyms: ["Regulated", "Orderly"] },
+            { word: "Invective", synonyms: ["accusation", "censure"], antonyms: ["Approval", "acclamation"] },
+            { word: "Intrinsic", synonyms: ["genuine", "fundamental"], antonyms: ["Extraneous", "incidental"] },
+            { word: "Invincible", synonyms: ["unconquerable", "impregnable"], antonyms: ["Effeminate", "languid"] },
+            { word: "Irrepressible", synonyms: ["irresistible", "unconfined"], antonyms: ["Composed", "hesitant"] },
+            { word: "Jejune", synonyms: ["dull", "boring"], antonyms: ["Interesting", "exciting"] },
+            { word: "Jaded", synonyms: ["tired", "exhausted"], antonyms: ["Renewed", "recreated"] },
+            { word: "Jubilant", synonyms: ["rejoicing", "triumphant"], antonyms: ["Melancholy", "depressing"] },
+            { word: "Jovial", synonyms: ["frolicsome", "cheerful"], antonyms: ["Solemn", "morose"] },
+            { word: "Just", synonyms: ["honest", "impartial"], antonyms: ["Unequal", "unfair"] },
+            { word: "Judicious", synonyms: ["thoughtful", "prudent"], antonyms: ["Irrational", "foolish"] },
+            { word: "Juvenile", synonyms: ["young", "tender"], antonyms: ["Dotage", "antiquated"] },
+            { word: "Justify", synonyms: ["defend", "exculpate"], antonyms: ["Impute", "arraign"] },
+            { word: "Knave", synonyms: ["dishonest", "scoundrel"], antonyms: ["Paragon", "innocent"] },
+            { word: "Knotty", synonyms: ["complicated", "difficult"], antonyms: ["Simple", "manageable"] },
+            { word: "Kindred", synonyms: ["relation", "species"], antonyms: ["Unrelated", "dissimilar"] },
+            { word: "Keen", synonyms: ["sharp", "poignant"], antonyms: ["Vapid", "insipid"] },
+            { word: "Knell", synonyms: ["death knell", "last blow"], antonyms: ["Reconstruction", "rediscovery"] },
+            { word: "Lax", synonyms: ["slack", "careless"], antonyms: ["Firm", "reliable"] },
+            { word: "Lavish", synonyms: ["abundant", "excessive"], antonyms: ["Scarce", "deficient"] },
+            { word: "Liable", synonyms: ["accountable", "bound"], antonyms: ["Unaccountable", "apt to"] },
+            { word: "Lenient", synonyms: ["compassionate", "merciful"], antonyms: ["Cruel", "severe"] },
+            { word: "Lucid", synonyms: ["sound", "rational"], antonyms: ["Obscure", "hidden"] },
+            { word: "Lure", synonyms: ["attract", "entice"], antonyms: ["Repel", "dissuade"] },
+            { word: "Linger", synonyms: ["loiter", "prolong"], antonyms: ["Hasten", "quicken"] },
+            { word: "Liberal", synonyms: ["magnanimous", "generous"], antonyms: ["Stingy", "malicious"] },
+            { word: "Lunacy", synonyms: ["delusion", "insanity"], antonyms: ["Normalcy", "sanity"] },
+            { word: "Luxuriant", synonyms: ["profuse", "abundant"], antonyms: ["Scanty", "meagre"] },
+            { word: "Luscious", synonyms: ["palatable", "delicious"], antonyms: ["Unsatisfactory", "inedible"] }
+        ];
+
+        // Quiz state
+        let currentMode = 'mixed';
+        let currentQuestion = 0;
+        let score = 0;
+        let streak = 0;
+        let bestStreak = 0;
+        let totalQuestions = 0;
+        let questions = [];
+        let selectedAnswer = null;
+        let answered = false;
+
+        // DOM elements
+        const startScreen = document.getElementById('startScreen');
+        const quizScreen = document.getElementById('quizScreen');
+        const synonymsMode = document.getElementById('synonymsMode');
+        const antonymsMode = document.getElementById('antonymsMode');
+        const mixedMode = document.getElementById('mixedMode');
+        const startQuizBtn = document.getElementById('startQuizBtn');
+        const newQuizBtn = document.getElementById('newQuizBtn');
+        const questionNumber = document.getElementById('questionNumber');
+        const accuracy = document.getElementById('accuracy');
+        const streakElement = document.getElementById('streak');
+        const bestStreakElement = document.getElementById('bestStreak');
+        const progressFill = document.getElementById('progressFill');
+        const questionType = document.getElementById('questionType');
+        const questionTitle = document.getElementById('questionTitle');
+        const optionsGrid = document.getElementById('optionsGrid');
+        const feedback = document.getElementById('feedback');
+        const feedbackIcon = document.getElementById('feedbackIcon');
+        const feedbackText = document.getElementById('feedbackText');
+        const feedbackDetail = document.getElementById('feedbackDetail');
+
+        // Event listeners
+        synonymsMode.addEventListener('click', () => selectMode('synonyms'));
+        antonymsMode.addEventListener('click', () => selectMode('antonyms'));
+        mixedMode.addEventListener('click', () => selectMode('mixed'));
+        startQuizBtn.addEventListener('click', startQuiz);
+        newQuizBtn.addEventListener('click', () => {
+            startScreen.classList.remove('hidden');
+            quizScreen.classList.add('hidden');
         });
-        
-        // Close mobile menu when clicking on a link
-        const navLinks = document.querySelectorAll('nav ul li a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('active');
-            });
-        });
-        
-        // Back to Top Button
-        const backToTopBtn = document.querySelector('.back-to-top');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('active');
-            } else {
-                backToTopBtn.classList.remove('active');
+
+        function selectMode(mode) {
+            currentMode = mode;
+            
+            // Remove active class from all buttons
+            synonymsMode.classList.remove('active');
+            antonymsMode.classList.remove('active');
+            mixedMode.classList.remove('active');
+            
+            // Add active class to selected button
+            if (mode === 'synonyms') synonymsMode.classList.add('active');
+            if (mode === 'antonyms') antonymsMode.classList.add('active');
+            if (mode === 'mixed') mixedMode.classList.add('active');
+        }
+
+        function startQuiz() {
+            startScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            
+            // Reset quiz state
+            currentQuestion = 0;
+            score = 0;
+            streak = 0;
+            totalQuestions = 0;
+            
+            generateQuestions();
+            showQuestion();
+        }
+
+        function generateQuestions() {
+            questions = [];
+            const shuffledData = [...vocabularyData].sort(() => Math.random() - 0.5);
+            
+            for (let i = 0; i < Math.min(20, shuffledData.length); i++) {
+                const word = shuffledData[i];
+                
+                if (currentMode === 'synonyms' || (currentMode === 'mixed' && Math.random() < 0.5)) {
+                    if (word.synonyms.length > 0) {
+                        questions.push(createQuestion(word, 'synonym'));
+                    }
+                }
+                
+                if (currentMode === 'antonyms' || (currentMode === 'mixed' && questions.length === i)) {
+                    if (word.antonyms.length > 0) {
+                        questions.push(createQuestion(word, 'antonym'));
+                    }
+                }
             }
-        });
-        
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+            
+            totalQuestions = questions.length;
+        }
+
+        function createQuestion(word, type) {
+            const correctAnswers = type === 'synonym' ? word.synonyms : word.antonyms;
+            const correctAnswer = correctAnswers[Math.floor(Math.random() * correctAnswers.length)];
+            
+            // Generate wrong answers from other words
+            const wrongAnswers = [];
+            const otherWords = vocabularyData.filter(w => w.word !== word.word);
+            
+            while (wrongAnswers.length < 3) {
+                const randomWord = otherWords[Math.floor(Math.random() * otherWords.length)];
+                const randomAnswers = type === 'synonym' ? randomWord.synonyms : randomWord.antonyms;
+                
+                if (randomAnswers.length > 0) {
+                    const wrongAnswer = randomAnswers[Math.floor(Math.random() * randomAnswers.length)];
+                    if (!wrongAnswers.includes(wrongAnswer) && wrongAnswer !== correctAnswer) {
+                        wrongAnswers.push(wrongAnswer);
+                    }
+                }
+            }
+            
+            const options = [correctAnswer, ...wrongAnswers].sort(() => Math.random() - 0.5);
+            
+            return {
+                word: word.word,
+                type: type,
+                question: `What is a ${type} of "${word.word}"?`,
+                options: options,
+                correctAnswer: correctAnswer,
+                allCorrectAnswers: correctAnswers
+            };
+        }
+
+        function showQuestion() {
+            if (currentQuestion >= questions.length) {
+                showResults();
+                return;
+            }
+            
+            const question = questions[currentQuestion];
+            answered = false;
+            selectedAnswer = null;
+            
+            // Update UI
+            questionNumber.textContent = `Question ${currentQuestion + 1}`;
+            questionType.textContent = question.type.charAt(0).toUpperCase() + question.type.slice(1);
+            questionType.className = `badge badge-${question.type}`;
+            questionTitle.textContent = question.question;
+            
+            // Update progress
+            const progress = ((currentQuestion) / totalQuestions) * 100;
+            progressFill.style.width = `${progress}%`;
+            
+            // Update stats
+            const accuracyPercent = totalQuestions > 0 ? Math.round((score / (currentQuestion || 1)) * 100) : 0;
+            accuracy.textContent = `${accuracyPercent}%`;
+            streakElement.textContent = streak;
+            bestStreakElement.textContent = bestStreak;
+            
+            // Create options
+            optionsGrid.innerHTML = '';
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.className = 'option-btn';
+                button.textContent = option;
+                button.addEventListener('click', () => selectAnswer(option, button));
+                optionsGrid.appendChild(button);
             });
-        });
-        
-        // Smooth Scrolling for Anchor Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
+            
+            // Hide feedback
+            feedback.classList.add('hidden');
+        }
+
+        function selectAnswer(answer, button) {
+            if (answered) return;
+            
+            selectedAnswer = answer;
+            answered = true;
+            
+            const question = questions[currentQuestion];
+            const isCorrect = answer === question.correctAnswer;
+            
+            // Update score and streak
+            if (isCorrect) {
+                score++;
+                streak++;
+                bestStreak = Math.max(bestStreak, streak);
+            } else {
+                streak = 0;
+            }
+            
+            // Update button states
+            const buttons = optionsGrid.querySelectorAll('.option-btn');
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                if (btn.textContent === question.correctAnswer) {
+                    btn.classList.add('correct');
+                } else if (btn === button && !isCorrect) {
+                    btn.classList.add('incorrect');
                 }
             });
-        });
-        
-        // Modal Functionality
-        const modal = document.getElementById('modal');
-        const closeModal = document.querySelector('.close-modal');
-        
-        function openModal(challenge) {
-            // Set modal content based on which challenge was clicked
-            const modalTitle = document.getElementById('modal-title');
-            const modalContent = document.getElementById('modal-content');
             
-            let title = '';
-            let content = '';
+            // Show feedback
+            showFeedback(isCorrect, question);
             
-            switch(challenge) {
-                case 'climate-change':
-                    title = 'Climate Change';
-                    content = `
-                        <h4>The Challenge</h4>
-                        <p>Climate change refers to long-term shifts in temperatures and weather patterns, primarily caused by human activities like burning fossil fuels which increase greenhouse gas emissions.</p>
-                        <p><strong>Key Impacts:</strong></p>
-                        <ul>
-                            <li>Global temperature rise (1.1°C since pre-industrial times)</li>
-                            <li>More frequent and intense extreme weather events</li>
-                            <li>Rising sea levels threatening coastal communities</li>
-                            <li>Ocean acidification harming marine life</li>
-                        </ul>
-                        <h4>Potential Solutions</h4>
-                        <ul>
-                            <li>Transition to renewable energy sources</li>
-                            <li>Energy efficiency improvements</li>
-                            <li>Carbon capture and storage technologies</li>
-                            <li>Reforestation and forest conservation</li>
-                            <li>Sustainable transportation systems</li>
-                        </ul>
-                    `;
-                    break;
-                    
-                case 'biodiversity':
-                    title = 'Biodiversity Loss';
-                    content = `
-                        <h4>The Challenge</h4>
-                        <p>Biodiversity loss refers to the decline in the variety of life on Earth at all levels, from genes to ecosystems, due to human activities.</p>
-                        <p><strong>Key Facts:</strong></p>
-                        <ul>
-                            <li>Current extinction rate is 100-1000 times higher than natural background rates</li>
-                            <li>75% of land environment and 66% of marine environment significantly altered</li>
-                            <li>1 million species threatened with extinction</li>
-                            <li>85% of wetlands lost since 1700</li>
-                        </ul>
-                        <h4>Potential Solutions</h4>
-                        <ul>
-                            <li>Protect and expand natural habitats</li>
-                            <li>Sustainable agriculture and forestry</li>
-                            <li>Combat wildlife trafficking</li>
-                            <li>Reduce pollution and pesticide use</li>
-                            <li>Support indigenous conservation efforts</li>
-                        </ul>
-                    `;
-                    break;
-                    
-                case 'pollution':
-                    title = 'Pollution';
-                    content = `
-                        <h4>The Challenge</h4>
-                        <p>Pollution is the introduction of harmful materials into the environment, causing damage to ecosystems and human health.</p>
-                        <p><strong>Major Types:</strong></p>
-                        <ul>
-                            <li><strong>Air pollution:</strong> Causes 7 million premature deaths annually</li>
-                            <li><strong>Plastic pollution:</strong> 8 million tons enter oceans each year</li>
-                            <li><strong>Chemical pollution:</strong> Pesticides, heavy metals, and other toxins</li>
-                            <li><strong>Noise/light pollution:</strong> Disrupts ecosystems and wildlife</li>
-                        </ul>
-                        <h4>Potential Solutions</h4>
-                        <ul>
-                            <li>Circular economy approaches</li>
-                            <li>Cleaner production technologies</li>
-                            <li>Waste reduction and recycling programs</li>
-                            <li>Stricter environmental regulations</li>
-                            <li>Public awareness campaigns</li>
-                        </ul>
-                    `;
-                    break;
-                    
-                case 'resources':
-                    title = 'Resource Depletion';
-                    content = `
-                        <h4>The Challenge</h4>
-                        <p>Resource depletion occurs when we consume natural resources faster than they can be replenished, threatening future availability.</p>
-                        <p><strong>Critical Resources at Risk:</strong></p>
-                        <ul>
-                            <li><strong>Freshwater:</strong> 2.3 billion people live in water-stressed countries</li>
-                            <li><strong>Fossil fuels:</strong> Finite and contribute to climate change</li>
-                            <li><strong>Minerals:</strong> Many rare earth metals essential for technology</li>
-                            <li><strong>Soil:</strong> 33% of Earth's soils degraded from erosion</li>
-                        </ul>
-                        <h4>Potential Solutions</h4>
-                        <ul>
-                            <li>Sustainable resource management</li>
-                            <li>Alternative materials development</li>
-                            <li>Water conservation technologies</li>
-                            <li>Extended producer responsibility</li>
-                            <li>Dematerialization of economies</li>
-                        </ul>
-                    `;
-                    break;
-                    
-                case 'food':
-                    title = 'Food Security';
-                    content = `
-                        <h4>The Challenge</h4>
-                        <p>Food security exists when all people have access to sufficient, safe, nutritious food, but current systems face multiple threats.</p>
-                        <p><strong>Key Issues:</strong></p>
-                        <ul>
-                            <li>30% of food produced is lost or wasted</li>
-                            <li>Industrial agriculture degrades soils and ecosystems</li>
-                            <li>Climate change reduces crop yields</li>
-                            <li>800 million people undernourished while obesity rises</li>
-                        </ul>
-                        <h4>Potential Solutions</h4>
-                        <ul>
-                            <li>Regenerative agriculture practices</li>
-                            <li>Reduction of food waste</li>
-                            <li>Local and seasonal food systems</li>
-                            <li>Plant-based diet shifts</li>
-                            <li>Urban farming initiatives</li>
-                        </ul>
-                    `;
-                    break;
-                    
-                case 'urbanization':
-                    title = 'Urbanization';
-                    content = `
-                        <h4>The Challenge</h4>
-                        <p>Rapid urban growth creates environmental pressures while offering opportunities for sustainable development.</p>
-                        <p><strong>Urban Challenges:</strong></p>
-                        <ul>
-                            <li>Cities consume 75% of global energy and emit 80% of GHGs</li>
-                            <li>Urban sprawl destroys natural habitats</li>
-                            <li>Air pollution and heat island effects</li>
-                            <li>Infrastructure strain from population density</li>
-                        </ul>
-                        <h4>Potential Solutions</h4>
-                        <ul>
-                            <li>Compact, mixed-use urban design</li>
-                            <li>Green buildings and infrastructure</li>
-                            <li>Efficient public transportation</li>
-                            <li>Urban green spaces and parks</li>
-                            <li>Smart city technologies</li>
-                        </ul>
-                    `;
-                    break;
-            }
-            
-            modalTitle.textContent = title;
-            modalContent.innerHTML = content;
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
+            // Auto advance after 2 seconds
+            setTimeout(() => {
+                currentQuestion++;
+                showQuestion();
+            }, 2000);
         }
-        
-        closeModal.addEventListener('click', () => {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
-        
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
+
+        function showFeedback(isCorrect, question) {
+            feedback.classList.remove('hidden', 'correct', 'incorrect');
+            feedback.classList.add(isCorrect ? 'correct' : 'incorrect');
+            
+            feedbackIcon.textContent = isCorrect ? '✓' : '✗';
+            feedbackText.textContent = isCorrect ? 'Correct!' : 'Incorrect';
+            
+            if (isCorrect) {
+                feedbackDetail.textContent = `Great job! "${question.correctAnswer}" is indeed a ${question.type} of "${question.word}".`;
+            } else {
+                const allAnswers = question.allCorrectAnswers.join(', ');
+                feedbackDetail.textContent = `The correct ${question.type}${question.allCorrectAnswers.length > 1 ? 's' : ''} of "${question.word}" ${question.allCorrectAnswers.length > 1 ? 'are' : 'is'}: ${allAnswers}`;
             }
-        });
+        }
+
+        function showResults() {
+            const finalAccuracy = Math.round((score / totalQuestions) * 100);
+            alert(`Quiz Complete!\n\nFinal Score: ${score}/${totalQuestions}\nAccuracy: ${finalAccuracy}%\nBest Streak: ${bestStreak}`);
+            
+            startScreen.classList.remove('hidden');
+            quizScreen.classList.add('hidden');
+        }
+
+        // Initialize
+        selectMode('mixed');
     </script>
 </body>
 </html>
